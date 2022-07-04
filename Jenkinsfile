@@ -41,7 +41,7 @@ pipeline {
                 sh "docker rm -f $containerName"
                 sh "docker pull mukesh1997/$containerName:$BUILD_NUMBER"
                 sh "docker run -itd -p 8070:8070 --name $containerName mukesh1997/$containerName:$BUILD_NUMBER"
-                echo "Docker Image build successfully"
+                echo "Docker container build successfully"
 }
 }
   }
