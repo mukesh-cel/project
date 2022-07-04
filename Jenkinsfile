@@ -23,5 +23,16 @@ pipeline {
                    echo "Docker image build complete"
             }
         }
+        stage (Docker push) {
+            steps {
+                script {
+                   withCredentials([string(credentialsId: 'Dockerhubcreds', variable: 'dockerhubcreds')]) {
+                   sh "docker login -u mukesh1997 -p ${dockerhubcreds}"
+                   sh "docker push mukesh1997/project:$BUILD_NUMBER"
+                   echo "docker push complete"
+}
+}
+}
+}
   }
 }
