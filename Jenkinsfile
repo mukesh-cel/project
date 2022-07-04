@@ -23,7 +23,11 @@ pipeline {
                    echo "Docker image build complete"
             }
         }
+<<<<<<< HEAD
         stage ('Docker push to DockerHub') {
+=======
+        stage ('Docker push') {
+>>>>>>> 023dd910f43cf56ec1b6fb161942aa10cc3a1a5e
             steps {
                 script {
                    withCredentials([string(credentialsId: 'Dockerhubcreds', variable: 'dockerhubcreds')]) {
