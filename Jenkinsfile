@@ -17,13 +17,13 @@ pipeline {
                 sh "mvn clean package"
             }
         }
-        stage('docker Build') {
+        stage('docker Image Build') {
             steps {
                 sh "docker build -t mukesh1997/project:$BUILD_NUMBER ."
                    echo "Docker image build complete"
             }
         }
-        stage (Docker push) {
+        stage ('Docker push to DockerHub') {
             steps {
                 script {
                    withCredentials([string(credentialsId: 'Dockerhubcreds', variable: 'dockerhubcreds')]) {
@@ -32,6 +32,14 @@ pipeline {
                    echo "docker push complete"
 }
 }
+}
+}
+        stage ('Docker Container Build') {
+            steps {
+                sh "docker rm project:$BUILD_NUMBER -f"
+                sh "docker pull mukesh1997/project:$BUILD_NUMBER"
+                sh "docker build -itd -p 8070:8070 --name MUKESH mukesh1997/project:$BUILD_NUMBER"
+                echo "Docker Image build successfully"
 }
 }
   }
