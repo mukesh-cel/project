@@ -1,5 +1,5 @@
 def containerName="docker-pipeline"
-def OldID="docker ps -a | grep -i $containerName"
+def OldID="docker ps -a | grep -i docker-pipeline"
 
 pipeline {
     agent any
