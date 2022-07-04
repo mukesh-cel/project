@@ -12,9 +12,14 @@ pipeline {
                 git 'https://github.com/mukesh-cel/DevOps-Project.git'
             }
         }
-        stage('Build') {
+        stage('Maven Build') {
             steps {
                 sh "mvn clean package"
+            }
+        }
+        stage('docker Build') {
+            steps {
+                sh "docker build -t mukesh1997/project:latest ."
             }
         }
   }
