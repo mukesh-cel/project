@@ -1,5 +1,4 @@
 def containerName="docker-pipeline"
-def OldID="docker ps -a | grep -i docker-pipeline"
 
 pipeline {
     agent any
@@ -39,8 +38,8 @@ pipeline {
 }
         stage ('Docker Container Build') {
             steps {
-                sh "docker rm $OldID -f"
-                sh "docker pull mukesh1997/$containerName:$BUILD_NUMBER"
+                sh "docker rm -f $containerName"
+                sh "docker pull mukesh1997/$ $containerName:$BUILD_NUMBER"
                 sh "docker run -itd -p 8070:8070 --name $containerName mukesh1997/$containerName:$BUILD_NUMBER"
                 echo "Docker Image build successfully"
 }
