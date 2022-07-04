@@ -38,7 +38,7 @@ pipeline {
 }
         stage ('Docker Container Build') {
             steps {
-                sh "docker rm mukesh1997/$containerName:$BUILD_NUMBER -f"
+                sh "docker rm mukesh1997/$containerName -f"
                 sh "docker pull mukesh1997/$containerName:$BUILD_NUMBER"
                 sh "docker run -itd -p 8070:8070 --name $containerName mukesh1997/$containerName:$BUILD_NUMBER"
                 echo "Docker Image build successfully"
