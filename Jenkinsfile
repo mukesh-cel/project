@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('SCM') {
             steps {
-                git 'https://github.com/mukesh-cel/DevOps-Project.git'
+               checkout scm
             }
         }
         stage('Maven Build') {
