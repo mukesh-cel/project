@@ -19,7 +19,8 @@ pipeline {
         }
         stage('docker Build') {
             steps {
-                sh "docker build -t mukesh1997/project:latest ."
+                sh "docker build -t mukesh1997/project:$BUILD_NUMBER ."
+                   echo "Docker image build complete"
             }
         }
   }
